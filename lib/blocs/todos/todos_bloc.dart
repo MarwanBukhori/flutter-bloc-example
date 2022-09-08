@@ -5,8 +5,11 @@ import '/models/models.dart';
 part 'todos_event.dart';
 part 'todos_state.dart';
 
+
 class TodosBloc extends Bloc<TodoEvent, TodosState> {
   TodosBloc() : super(TodosLoading()) {
+
+    //link Event dgn BLoC
     on<LoadTodos>(_onLoadTodos);
     on<AddTodo>(_onAddTodo);
     on<DeleteTodo>(_onDeleteTodo);
@@ -38,6 +41,8 @@ class TodosBloc extends Bloc<TodoEvent, TodosState> {
     Emitter<TodosState> emit,
   ) {
     final state = this.state;
+
+    //check state
     if (state is TodosLoaded) {
       List<Todo> todos = (state.todos.where((todo) {
         return todo.id != event.todo.id;

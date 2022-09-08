@@ -12,7 +12,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BloC Pattern: To Dos'),
+        title: const Text('Testing BLoC '),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
@@ -40,10 +41,13 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
+                  //Pending To Dos
                   _todo(
                     state.pendingTodos,
                     'Pending',
                   ),
+                  //Completed To Dos
                   _todo(
                     state.completedTodos,
                     'Completed',
@@ -95,6 +99,7 @@ class HomeScreen extends StatelessWidget {
     Todo todo,
   ) {
     return Card(
+      color: Colors.grey.shade200,
       margin: const EdgeInsets.only(bottom: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

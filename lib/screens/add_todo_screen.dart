@@ -15,7 +15,8 @@ class AddTodoScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BloC Pattern: Add a To Do'),
+        title: const Text('Tambah'),
+        centerTitle: true,
       ),
       body: BlocBuilder<TodosBloc, TodosState>(
         builder: (context, state) {
@@ -36,17 +37,19 @@ class AddTodoScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         var todo = Todo(
+                          //retrieve data from textfield
                           id: controllerId.value.text,
                           task: controllerTask.value.text,
                           description: controllerDescription.value.text,
                         );
+                        //todos_Event yang berlaku
                         context.read<TodosBloc>().add(AddTodo(todo: todo));
                         Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Theme.of(context).primaryColor,
                       ),
-                      child: const Text('Add To Do'),
+                      child: const Text('Tambah'),
                     ),
                   ],
                 ),
